@@ -1,181 +1,365 @@
-<style type="text/css">
-@media only print {
-	.print-modal-content {
-	     position: absolute;
-	     overflow: auto;
-	     width: 100%;
-	     height: 100%;
-	     z-index: 100000; /* CSS doesn't support infinity */
-	}
-	.modal-dialog {
-		display: none;
-	}
-}
-</style>
-<?php $customer_name = get_the_customer($quotation['customer_id'],'customer_name');
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYAAN COMPANY</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@100..200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <main>
+        <div class="container" >
+            <header>
+                <div>
+                    <h2>KYAAN COMPANY</h3>
+                    <h4>To import Medicines And Medical Supplies</h5>
+                    <p>Kuwait - Salmyia - Block 6 – Alawazem Street
+                    </p>
+                    <p>Alsamran Complex – Floor 8 – Office 17
+                    </p>
+                    <a class="mobile">Mob.: +965 50 30 30 28</a>
+                </div>
+                <div>
+                    <div style="text-align: center;">
+                        <img class="image" style="width: 300px;" src="Kayan Logo (Horizontal)_Ar+En Horizontal.png" />
+                    </div>
+                    <div style="display: flex;position: absolute;top: 240px; align-items: center; justify-content: center;gap: 10px; color: var(--main-color);">
+                        <div>
+                            <i class="fa-solid fa-envelope-circle-check"></i>
+                            <a style="font-weight: bold;">info@kayaan.me</a>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-globe"></i>
+                            <a style="font-weight: bold;">www.kayaan.me</a>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: right;">
+                    <h2>شركة كيان</h3>
+                    <h4>لأستيراد الأدوية والمستلزمات الطبية</h5>
+                    <p>الكويت - السالمية - قطعة6 - شارع العوازم
+                    </p>
+                    <p>مجمع السمران - الدور الثامن - مكتب رقم 17
+                    </p>
+                    <a class="mobile">+965 50 30 30 28 :نقال</a>
+                </div>
+            </header>
+            <section style="display: flex; align-items: center; justify-content: space-between;">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="font-weight: bold; color:var(--main-color);">No: </span> <a style="color: red; font-weight:bold;">008877</a><span style="font-weight: bold; color:var(--main-color);">:الرقم </span>
+                </div>
+                <div style="width: 40%; text-align: center; border-radius: 15px; border: 3px solid var(--main-color); padding: 10px; gap: 10px;"><span style="font-weight: bold;color: var(--main-color);margin-left: 25px;">فاتورة: </span><span style="font-weight: bold;color: red;"> نقدا / بالحساب</span> </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="font-weight: bold; color:var(--main-color);">Date: </span> <a style="color: red; font-weight:bold;">02/ 02/ 2024</a><span style="font-weight: bold; color:var(--main-color);">:التاريخ </span>
+                </div>
+            </section>
+            <section style="margin-top: 30px;">
+                <div class="mr"  style="display: flex; justify-content: space-between; border-radius: 15px; border: 3px solid var(--main-color); ">
+                    <div>
+                        <h3  style="font-weight: bold; color: var(--main-color);margin-left: 15px; ">MR. / MRS</h3>
+                    </div>
+                    <div>
+                        <h3  style="font-weight: bold; color: var(--main-color);margin-right: 15px; ">السيد / السادة</h3>
+                    </div>
+                </div>
+            </section>
+            <section style="margin-top: 30px;">
+                <table >
+                    <thead>
+                        <tr>
+                            <th><span>الرمز</span> <br><span>Code</span></th>
+                            <th style="width: 30%;"><span>اسم الصنف</span><br><span>Item Name</span></th>
+                            <th><span>الكمية</span> <br><span>Quantity</span></th>
+                            <th><span>السعر</span> <br><span>Price</span></th>
+                            <th><span>الخصم</span> <br><span>Discount</span></th>
+                            <th><span>اجمالي القيمة</span> <br><span>Total Amount</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                        <tr>
+                            <td>لرثشل</td>
+                            <td>الاثاص</td>
+                            <td>زكزهبك</td>
+                            <td>تغتنف</td>
+                            <td>نفعفنة</td>
+                            <td>نفةنع</td>
+                        </tr>
+                    </tbody>
+                    </table>
+            </section>
+          
+            <section style="margin-top: 30px;">
+                <div   style=" text-align: right; display: flex; flex-direction: column-reverse;  border-radius: 15px; border: 3px solid var(--main-color); ">
+                    <div style=" font-weight: bold; color: var(--main-color);">
+                        <div style="height: 40px; gap: 10px; display: flex;justify-content: flex-end;">
+                            <span style="margin-top:5px ;"> Total الأجمالي </span>
+                            <div style=" width: 120px; background-color: #e1e9ea; border-top-right-radius: 10px; border-bottom: 3px solid var(--main-color);"></div>
+                        </div>
+                        <div>
+                            <div style="height: 40px; gap: 10px;display: flex;justify-content: flex-end;">
+                                <span> Discount الخصم </span>
+                               <div style=" width: 120px; background-color: #e1e9ea; border-top-right-radius: 10px; border-bottom: 3px solid var(--main-color);"></div>
+                           </div>
+                        </div>
+                        <div>
+                            <div style="height: 40px; gap: 10px;display: flex;justify-content: flex-end;">
+                                <span>Net Total الصافي </span>
+                                <div style=" width: 120px; background-color: #e1e9ea; border-bottom-right-radius: 10px; "></div>
+                           </div>
+                        </div>
+                    </div>                   
+                </div>
+            </section>
 
-// Qrcode
-$qrcode_text = 'Reference No.: ' . $quotation['reference_no'] . ', Customer: ' . $customer_name;
-include(DIR_VENDOR.'/phpqrcode/qrlib.php');
-QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
-?>
-<div id="quotataion-view">
-	<div class="logo" style="text-align:center;margin-bottom:10px;">
-	<?php if ($store->get('logo')): ?>
-	  <img src="<?php echo root_url(); ?>/assets/itsolution24/img/logo-favicons/<?php echo $store->get('logo'); ?>" width="auto" height="60">
-	<?php else: ?>
-	  <img src="<?php echo root_url(); ?>/assets/itsolution24/img/logo-favicons/nologo.png" width="auto" height="60">
-	<?php endif; ?>
-	</div>
-	<table class="table table-bordered table-condensed">
-		<tbody>
-			<tr>
-				<td style="width:50%;vertical-align:top;">
-					<h6 style="font-style:italic;font-weight:bold;"><?php echo trans('label_from');?>:</h6>
-					<address class="mb-0">
-						<h4 style="font-weight:bold;"><?php echo store('name');?></h4>
-						<p><?php echo nl2br(store('address'));?></p>
-						<?php if ($vat = store('vat_reg_no')):?>
-						<span><?php echo trans('label_vat_number');?>: <?php echo $vat;?></span><br>
-						<?php endif; ?>
-						<?php if (get_preference('invoice_view') == 'indian_gst'):?>
-				            <?php if (get_preference('gst_reg_no')):?>
-				              <span><?php echo trans('label_gst_reg_no'); ?>: <?php echo get_preference('gst_reg_no'); ?></span>
-				            <?php endif;?>
-				        <?php endif;?>
-						<span><?php echo trans('label_mobile');?>: <?php echo store('mobile');?></span><br>
-						<span><?php echo trans('label_email');?>: <?php echo get_preference('smtp_username');?></span><br>
-						<span><?php echo trans('label_date');?>: <?php echo format_date($quotation['created_at']);?></span><br>
-						<span><?php echo trans('label_reference_no');?>: <?php echo $quotation['reference_no'];?></span><br>
-					</address>
-				</td>
-				<td style="width:50%;vertical-align:top;">
-					<h6 style="font-style:italic;font-weight:bold;"><?php echo trans('label_to');?>:</h6>
-					<address class="mb-0">
-						<h4 style="font-weight:bold;"><?php echo $customer_name;?></h4>
-						<p><?php echo nl2br(get_the_customer($quotation['customer_id'],'customer_address'));?></p>
-						<span><?php echo trans('label_mobile');?>: <?php echo get_the_customer($quotation['customer_id'],'customer_mobile');?></span><br>
-						<span><?php echo trans('label_email');?>: <?php echo get_the_customer($quotation['customer_id'],'customer_email');?></span><br>
-						<div class="qrcode">
-						  <img src="<?php echo root_url();?>/storage/qrcode.png">
-						</div>
-					</address>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+            <section style="margin-top: 30px;">
+                <p style="font-weight: 200;color: var(--main-color);">I, the undersigned, aknoledge hereby that i recived the goods mentioned hereinabove after carefully exmining them and found them to be in good condition and in consistency 
+                    with the required specification and quantities, As will as, i undertake hereby to settle the value of the goods.</p>
+                    <p style="text-align: right; font-weight: 200;color: var(--main-color);">.اقرانا الموقع أدناه،بأني استلمت البضائع المذكورة أعلاه بعد أن عايننها بعنايه،وهي بحاله جيد’ ومطابقة للمواصفات والكميات المطلوبة،وأتعهد بسداد قيمتها</p>
 
-	<div class="xrow">
-		<div class="xcol-md-12">
-			<div class="table-responsive">
-				<table class="table table-bordered margin-b0 table-condensed">
-					<thead>
-					<tr class="bg-gray">
-						<td class="w-5 text-center">
-							<?php echo trans('label_sl'); ?>	
-						</td>
-						<td class="w-35 text-center">
-							<?php echo trans('label_product'); ?>	
-						</td>
-						<td class="w-20 text-center">
-							<?php echo trans('label_unit_price'); ?>
-						</td>
-						<td class="w-15 text-center">
-							<?php echo trans('label_item_tax'); ?>
-						</td>
-						<td class="w-25 text-center">
-							<?php echo trans('label_subtotal'); ?>
-						</td>
-					</tr>
-					</thead>
-					<tbody>
-						<?php $inc=1;foreach ($quotation_items as $product) : ?>
-							<tr>
-								<td class="text-center"><?php echo $inc;?></td>
-								<td>
-									<?php echo $product['item_name'];?> <?php echo $product['item_variant_name'] ? '('.$product['item_variant_name'].')' : '';?> x <?php echo currency_format($product['item_quantity']); ?> <?php echo $product['unitName']; ?>
-								</td>
-								<td class="text-right">
-									<?php echo currency_format($product['item_price']); ?>
-								</td>
-								<td class="text-right">
-									<?php echo currency_format($product['item_tax']); ?>
-								</td>
-								<td class="text-right">
-									<?php echo currency_format($product['item_total']); ?>
-								</td>
-							</tr>
-						<?php $inc++;endforeach; ?>
-					</tbody>
-					<tfoot>
-						<tr>
-							<td class="text-right" colspan="4">
-								<?php echo trans('label_subtotal'); ?>
-							</td>
-							<td class="w-20 text-right">
-								<?php echo currency_format($quotation['subtotal']+$quotation['item_tax']); ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-right" colspan="4">
-								<?php echo trans('label_order_tax'); ?> (+)
-							</td>
-							<td class="w-20 text-right">
-								<?php echo currency_format($quotation['order_tax']); ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-right" colspan="4">
-								<?php echo trans('label_shipping'); ?> (+)
-							</td>
-							<td class="w-20 text-right">
-								<?php echo currency_format($quotation['shipping_amount']); ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-right" colspan="4">
-								<?php echo trans('label_others_charge'); ?> (+)
-							</td>
-							<td class="w-20 text-right">
-								<?php echo currency_format($quotation['others_charge']); ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-right" colspan="4">
-								<?php echo trans('label_discount'); ?> (-)
-							</td>
-							<td class="w-20 text-right">
-								<?php echo currency_format($quotation['discount_amount']); ?>
-							</td>
-						</tr>
-						<tr>
-							<td class="text-right" colspan="4" style="font-weight:bold">
-								<?php echo trans('label_payable_amount'); ?>
-							</td>
-							<td class="w-20 text-right" style="font-weight:bold">
-								<?php echo currency_format($quotation['payable_amount']); ?>
-							</td>
-						</tr>
-						<?php if ($quotation['quotation_note']):?>
-						<tr>
-							<td colspan="5"><b>Note: </b><?php echo $quotation['quotation_note'];?></td>
-						</tr>
-						<?php endif;?>
-					</tfoot>
-				</table>
-			</div>
-
-			<table class="table margin-b0 table-condensed" style="margin-top:100px;">
-				<tr>
-					<td class="w-25" style="text-align:center;border:0;"></td>
-					<td class="w-25" style="text-align:center;border:0;"></td>
-					<td style="text-align:center;border:0;">
-						<hr>
-						<?php echo trans('label_stamp_and_signature'); ?>
-					</td>
-				</tr>
-			</table>
-				
-		</div>
-	</div>
-</div>
+                    <div style="text-align: center; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 300px; height: 2px; background-color: var(--main-color);">
+                                </div>
+                                <div style="color: var(--main-color);">
+                                    <h3>المخزن</h3>
+                                    <h3>Store Keeper</h3>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 300px; height: 2px; background-color: var(--main-color);">
+                                </div>
+                                <div style="color: var(--main-color);">
+                                    <h3>التوقيع</h3>
+                                    <h3>Signature</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 300px; height: 2px; background-color: var(--main-color);">
+                                </div>
+                                <div style="color: var(--main-color);">
+                                    <h3>اسم المستلم</h3>
+                                    <h4>Received by</h3>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 5px;">
+                                <div style="width: 300px; height: 2px; background-color: var(--main-color);">
+                                </div>
+                                <div style="color: var(--main-color);">
+                                    <h3>توقيع المستلم</h3>
+                                    <h4>Received signature</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
