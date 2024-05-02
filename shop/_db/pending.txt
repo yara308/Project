@@ -1,0 +1,52 @@
+advertisement management
+flash sale
+quick view
+category banner
+breadcrumb
+floating login
+
+Done
+	order delete
+
+verb should not a uppercase while trnalating
+payment method logo
+faq questions
+out clients list dashboard
+shop translation
+return/refund
+sms/email for order status and others
+service
+sub-category
+product variant/color
+settings page
+	[no need]is out of product will show or not
+	product listing
+	privacy policy / return policy / support page
+
+
+
+xxx01. Product with description list hole out of stock label show korse na
+xxx02. Product select hoyar por Payment method select korar por order Confirmed a click korar por Warning show korse 
+xxx03. Best sales option problem (2ta product show korse)
+xxx06. Quick view button is not working
+xxx09.  Auto focus on product search input field.
+xxx14. Registration is not working
+xxx15. Best product ar details a gele error
+xxx16. Increase the product quantity (+ icon click) it automatically added to cart
+xxx19. Edit my account , Change password show korse na login korleo 
+xxx**. Banner add/remove edit in admin panel
+
+Do it later
+07. Product view details button beside of ADD TO CART
+17. Product na service seta show korate hobe
+18. Top menu bar and left menu bar design korte hobe
+
+Pending
+04.  Setting for Out of product show or not
+05. Sub category haven't option in front-end
+08. settings for how many product show in a row.
+10. Out of stock product doesn't have the add to cart button.
+11. New Product like Best sales section
+12. Filter with gender
+13. Product variety with color size and other
+14. Banner permission

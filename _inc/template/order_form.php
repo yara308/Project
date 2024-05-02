@@ -1,0 +1,149 @@
+<?php include ("../../_init.php");?>
+<style type="text/css">
+.order-table td {
+	padding: 3px!important;
+}
+.order-table tfoot {
+	border: 1px solid #ccc;
+	margin-top: 5px;
+	background: #fff;
+}
+</style>
+<form class="form-horizontal" id="order-place-form" action="quotation.php?action_type=CREATE">
+<input type="hidden" name="customer_id" value="{{ customerId }}">
+<input type="hidden" name="customer-mobile" value="{{ customerMobileNumber }}">
+<input type="hidden" name="date" value="<?php echo date('Y-m-d');?>">
+<input type="hidden" name="is_order" value="1">
+<input type="hidden" name="status" value="1">
+<?php if (LOCALIZATION):?>
+	<input type="hidden" name="currency" value="{{ currencyCode }}">
+<?php else:?>
+	<input type="hidden" name="currency" value="USD">
+<?php endif;?>
+<div class="bootbox-body">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="input-group input-group-lg group-content">
+				<span class="input-group-addon"><?php echo trans('text_reference_no'); ?></span>
+				<input id="reference_no" class="form-control" ng-model="orderName" name="reference_no" ng-keypress="makeOrderWhilePressEnter($event)" autofocus>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-10">
+		<div class="col-lg-12">
+			<div class="input-group input-group-sm group-content">
+				<span class="input-group-addon"><?php echo trans('text_order_note'); ?></span>
+				<input id="quotation-note" class="form-control" name="quotation-note">
+			</div>
+		</div>
+	</div>
+	<div class="table-selection">
+		<div class="text-center">
+			<h4><?php echo trans('text_order_details'); ?></h4>
+		</div>
+		<div class="well" style="margin-bottom: 0;">
+			<div class="table-responsive">
+			<table class="table table-bordered order-table">
+				<tbody>
+					<tr ng-repeat="items in itemArray" class="bg-gray">
+						<td class="text-center w-10">
+							<input type="hidden" name="products['{{ items.id }}'][p_type]" value="{{ items.pType }}">
+							<input type="hidden" name="products['{{ items.id }}'][variant_slug]" value="{{ items.variantSlug }}">
+							<input type="hidden" name="products['{{ items.id }}'][variant_name]" value="{{ items.variantName }}">
+							<input type="hidden" name="products['{{ items.id }}'][item_id]" value="{{ items.id }}">
+							<input type="hidden" name="products['{{ items.id }}'][category_id]" value="{{ items.categoryId }}">
+							<input type="hidden" name="products['{{ items.id }}'][sup_id]" value="{{ items.supId }}">
+							<input type="hidden" name="products['{{ items.id }}'][item_name]" value="{{ items.name }}">
+							<input type="hidden" name="product-item['{{ items.id }}'][notes]" value="{{ items.notes }}">
+							<input type="hidden" name="products['{{ items.id }}'][sell_price]" value="{{ items.price }}">
+							<input type="hidden" name="products['{{ items.id }}'][quantity]" value="{{ items.quantity }}">
+							<input type="hidden" name="products['{{ items.id }}'][tax_amount]" value="{{ items.taxamount }}">
+							<input type="hidden" name="products['{{ items.id }}'][unit_price]" value="{{ items.subTotal }}">
+							{{ $index+1 }}
+						</td>
+						<td class="w-70">{{ items.name }}<span ng-show="items.variantSlug"> ({{ items.variantName }})</span> x {{ items.quantity }} {{ items.unitName }}</td>
+						<td class="text-right w-30">{{ items.subTotal | curConvert:conValue:currencyCode  | formatDecimal:2 }}</td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td class="text-right w-70" colspan="2">
+							<?php echo trans('label_subtotal'); ?>
+						</td>
+						<td class="text-right w-30">
+							<input type="hidden" name="total-amount" value="{{ totalAmount }}">
+							{{ totalAmount | curConvert:conValue:currencyCode | formatDecimal:2 }}
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right w-70" colspan="2">
+							<?php echo trans('label_order_tax'); ?>
+						</td>
+						<td class="text-right w-30">
+							<input type="hidden" name="order-tax-amount" value="{{ taxAmount }}">
+							{{ taxAmount | formatDecimal:2 }}
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right w-70"  colspan="2">
+							<?php echo trans('label_discount'); ?> {{ discountType  == 'percentage' ? '('+discountAmount+'%)' : '' }}
+						</td>
+						<td class="text-right w-30" >
+							<input type="hidden" name="discount-amount" value="{{ discountType  == 'percentage' ? _percentage(totalAmount, discountAmount) : discountAmount }}">
+							<input type="hidden" name="discount-type" value="{{ discountType }}">
+							{{ discountType  == 'percentage' ? (_percentage(totalAmount, discountAmount) | formatDecimal:2) : (discountAmount | formatDecimal:2) }}
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right w-70" colspan="2">
+							<?php echo trans('label_tax_amount'); ?>(%)
+						</td>
+						<td class="text-right w-30">
+							<input type="hidden" name="total-tax-amount" value="{{ taxAmount }}">
+							{{ taxAmount | formatDecimal:2 }}
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right w-70"  colspan="2">
+							<?php echo trans('label_shipping_charge'); ?> {{ shippingType  == 'percentage' ? '('+shippingAmount+'%)' : '' }}
+						</td>
+						<td class="text-right w-30" >
+							<input type="hidden" name="shipping-amount" value="{{ shippingType  == 'percentage' ? _percentage(totalAmount, shippingAmount) : shippingAmount }}">
+							<input type="hidden" name="shipping-type" value="{{ shippingType }}">
+							{{ shippingType  == 'percentage' ? (_percentage(totalAmount, shippingAmount) | formatDecimal:2) : (shippingAmount | formatDecimal:2) }}
+						</td>
+					</tr>
+					<tr>
+						<th class="text-right w-70" colspan="2">
+							<?php echo trans('label_others_charge'); ?>
+						</th>
+						<td class="text-right w-30">
+							<input type="hidden" name="others-charge" value="{{ othersCharge }}">
+							{{ othersCharge | formatDecimal:2 }}
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right w-70" colspan="2">
+							<?php echo trans('label_payable_amount'); ?>
+							<small>({{ totalItem }} items)</small>
+						</td>
+						
+						<td class="text-right w-30">
+							<input type="hidden" name="payable-amount" value="{{ totalPayable }}">
+							{{ totalPayable | curConvert:conValue:currencyCode | formatDecimal:2 }}
+						</td>
+					</tr>
+					<tr><td colspan="3">&nbsp;</td></tr>
+					<tr ng-show="invoiceNote">
+						<td colspan="3">
+							<b><?php echo trans('label_note'); ?>:</b> <i>{{ invoiceNote }}</i>
+							<input class="hidden" name="invoice-note" value="{{ invoiceNote }}">
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+			</div>
+		</div>
+	</div>
+</div>
+</form>

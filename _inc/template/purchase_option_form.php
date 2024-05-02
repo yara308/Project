@@ -1,0 +1,5 @@
+<ul class="list-gorup list-unstyled" style="margin:20px;">
+	<?php foreach ($variants as $value):?>
+		<li id="variant_list_item_<?php echo $value['variant_id'];?>" ng-click="applyVariantPrice('<?php echo $id;?>', '<?php echo $name;?>','<?php echo $purchase_price;?>','<?php echo $sell_price;?>', '<?php echo $value['purchase_price_addition'];?>','<?php echo $value['sell_price_addition'];?>','<?php echo $value['variant_id'];?>','<?php echo $value['variant_slug'];?>','<?php echo $value['variant_name'];?>')" class="list-group-item variant-list-group-item pointer" style="font-size:22px;font-weight:700;"><span class="fa fa-fw fa-circle-o" style="font-size:18px;"></span> <span><?php echo $value['variant_name'];?></span> <small>[<?php echo $value['purchase_price_addition'] > 0 ? '+ '.currency_format($value['purchase_price_addition']) : currency_format($value['purchase_price_addition']);?>]</small></li>
+	<?php endforeach;?>
+</ul>

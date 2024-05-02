@@ -1,0 +1,9 @@
+[24-Mar-2022 03:55:13 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'onz.stores' doesn't exist in /home/tnk00kg306ar/public_html/_inc/lib/database.php:41
+Stack trace:
+#0 /home/tnk00kg306ar/public_html/_inc/lib/database.php(41): PDO->prepare('SELECT * FROM `...', Array)
+#1 /home/tnk00kg306ar/public_html/_inc/lib/store.php(41): Database->prepare('SELECT * FROM `...')
+#2 /home/tnk00kg306ar/public_html/_init.php(222): Store->__construct(Object(Registry))
+#3 /home/tnk00kg306ar/public_html/shop/_init.php(4): include('/home/tnk00kg30...')
+#4 /home/tnk00kg306ar/public_html/shop/home.php(4): include('/home/tnk00kg30...')
+#5 {main}
+  thrown in /home/tnk00kg306ar/public_html/_inc/lib/database.php on line 41

@@ -1,0 +1,59 @@
+RewriteEngine On
+RewriteBase /
+
+# Friendly URLs for categories and brands with optional page numbers
+RewriteRule ^products/category/(\d+)/(\d+)$ products.php?category_id=$1&page=$2 [L,QSA]
+RewriteRule ^products/brand/(\d+)/(\d+)$ products.php?brand_id=$1&page=$2 [L,QSA]
+
+# Friendly URLs for categories and brands without page numbers (default to page 1)
+RewriteRule ^products/category/(\d+)$ products.php?category_id=$1&page=1 [L,QSA]
+RewriteRule ^products/brand/(\d+)$ products.php?brand_id=$1&page=1 [L,QSA]
+
+# Friendly URL for search
+#RewriteRule ^search/(.*)$ products.php?s=$1 [L]
+
+# Friendly URL for new products, best sales, and welcome page
+RewriteRule ^newproducts$ products.php?new_products=yes [L,QSA]
+RewriteRule ^bestsales$ products.php?best_sales=yes [L,QSA]
+RewriteRule ^welcome$ home.php [L]
+
+# Friendly URL for products with reference number
+RewriteRule ^success\.php/reference_no/(.*)$ success.php?reference_no=$1 [L]
+
+
+
+# Redirect old URL structure to the new one for SEO reasons
+RewriteCond %{THE_REQUEST} /product_details.php\?product_id=(\d+) [NC]
+RewriteRule ^ /product/product-name-%1? [L,R=301] # you'd replace 'product-name' with the actual name or find a way to map it dynamically
+
+# Rewrite the new format back to the actual PHP file
+#RewriteRule ^product/([a-zA-Z0-9-]+)-(\d+)$ product_details.php?product_id=$2 [L,QSA]
+
+
+# Redirect /product/{product_name}-{product_id} to /products.php?product_id={product_id}
+RewriteRule ^product/([a-zA-Z0-9-]+)-(\d+)$ product_details.php?product_id=$2 [L,QSA]
+
+<IfModule mod_expires.c>
+    # Enable expirations
+    ExpiresActive On
+
+    # Default directive
+    ExpiresDefault "access plus 1 month"
+
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+
+    # Fonts
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

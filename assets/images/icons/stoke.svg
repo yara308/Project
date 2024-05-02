@@ -1,0 +1,31 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient y2="0" y1="1" x2="0.5" x1="0.5" id="SVGID_1_">
+   <stop stop-color="#ffbef9" offset="0"/>
+   <stop stop-color="#fff1ff" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="0" y1="1" x2="0.5" x1="0.5" id="SVGID_2_">
+   <stop stop-color="#a93aff" offset="0"/>
+   <stop stop-color="#ff81ff" offset="1"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="26" width="26" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_1">
+   <g stroke="null" id="svg_2">
+    <g stroke="null" id="svg_3">
+     <path stroke="null" id="svg_4" fill="url(#SVGID_1_)" d="m12,4.6c0.99256,0 1.8,-0.80744 1.8,-1.8s-0.80744,-1.8 -1.8,-1.8s-1.8,0.80744 -1.8,1.8s0.8074,1.8 1.8,1.8zm0,-2.4c0.33048,0 0.6,0.26896 0.6,0.6s-0.26952,0.6 -0.6,0.6s-0.6,-0.26896 -0.6,-0.6s0.26952,-0.6 0.6,-0.6zm1.2,15.6l-2.4,0c-0.33164,0 -0.6,0.26836 -0.6,0.6l0,1.28c0,0.99256 0.80744,1.8 1.8,1.8s1.8,-0.80744 1.8,-1.8l0,-1.28c0,-0.33164 -0.26836,-0.6 -0.6,-0.6z"/>
+    </g>
+   </g>
+   <g stroke="null" id="svg_5">
+    <g stroke="null" id="svg_6">
+     <path stroke="null" id="svg_7" fill="url(#SVGID_2_)" d="m20.4,17.8c-1.06172,0 -1.96172,-0.8004 -2.09296,-1.86092l-0.94804,-7.7994c-0.3258,-2.7018 -2.62972,-4.73968 -5.359,-4.73968s-5.0332,2.03788 -5.359,4.73908l-0.94804,7.7994c-0.13124,1.06112 -1.03124,1.86152 -2.09296,1.86152c-0.33164,0 -0.6,0.26836 -0.6,0.6s0.26836,0.6 0.6,0.6l16.8,0c0.33164,0 0.6,-0.26836 0.6,-0.6s-0.26836,-0.6 -0.6,-0.6z"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

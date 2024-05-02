@@ -1,0 +1,45 @@
+Logo (width x height)
+	
+	40 x 40
+	225 x 25
+
+
+Banner Home page (width x height)
+
+	1300 x 266
+
+
+Product Image Size: (width x height)
+	
+	Medium (in product listing page)
+		220x220
+		
+	SM (in product details page)
+		66x66
+
+	Large (in product details page)
+		450x420
+
+	Shopping Cart Image
+		70x80
+
+
+Header title banner (width x height)
+	1500 x 62
+
+
+
+Categories Image Size: (width x hegight)
+
+		383x383
+
+	SM (in home page listing)
+
+		388x193 
+
+
+Brands Image Size: (width x hegight)
+
+	383 x 383
+
+

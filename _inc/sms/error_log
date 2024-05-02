@@ -1,0 +1,2 @@
+[05-Apr-2022 00:56:01 UTC] PHP Warning:  "continue" targeting switch is equivalent to "break". Did you mean to use "continue 2"? in /home/tnk00kg306ar/public_html/_inc/sms/index.php on line 53
+[05-Apr-2022 02:56:01 Africa/Cairo] PHP Fatal error:  Class SMSGateway\Gateway\Twilio contains 1 abstract method and must therefore be declared abstract or implement the remaining methods (SMSGateway\Gateway\GatewayInterface::send) in /home/tnk00kg306ar/public_html/_inc/sms/_inc/gateway/Twilio.php on line 23
