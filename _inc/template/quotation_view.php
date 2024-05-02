@@ -355,7 +355,7 @@
                                     <h3>توقيع المستلم</h3>
                                     <h4>Received signature</h3>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
             </section>
