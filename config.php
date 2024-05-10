@@ -3,8 +3,8 @@
 
 	$sql_details = array(
 		'host' => 'localhost',
-		'db' => 'root',
-		'user' => 'db',
+		'db' => 'db',
+		'user' => 'root',
 		'pass' => '11225588',
 		'port' => '3306'
 	);
@@ -45,7 +45,7 @@
 	 *
 	 */
 	define('SYNCHRONIZATION', false);
-	define('SYNCSERVERURL', '');
+	define('SYNCSERVERURL', 'Project');
 
 
 	/*
@@ -55,7 +55,7 @@
 	 *
 	 * This is useful when you will host the app inside a subdirectory of root
 	 */
-	define('SUBDIRECTORY', '');
+	define('SUBDIRECTORY', 'Project');
 
 
 	/*
