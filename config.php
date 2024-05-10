@@ -3,9 +3,9 @@
 
 	$sql_details = array(
 		'host' => 'localhost',
-		'db' => 'admin_onz',
-		'user' => 'admin_onz0',
-		'pass' => 'admin_onz0',
+		'db' => 'root',
+		'user' => 'db',
+		'pass' => '11225588',
 		'port' => '3306'
 	);
 
