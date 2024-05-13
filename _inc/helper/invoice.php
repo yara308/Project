@@ -480,13 +480,13 @@ function get_postemplate_data($invoice_id)
     
     // Qrcode
     $qrcode_text = 'InvoiceID: ' . $invoice_id . ', Name: ' .$customer_name;
-    include(DIR_VENDOR.'/phpqrcode/qrlib.php');
-    QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
+    //include(DIR_VENDOR.'/phpqrcode/qrlib.php');
+   // QRcode::png($qrcode_text, ROOT.'/storage/qrcode.png', 'L', 3, 1);
 
     // Barcode
-    $generator = barcode_generator();
-    $barcode_generator = barcode_generator();
-    $symbology = barcode_symbology($generator, 'code_39');
+    //$generator = barcode_generator();
+    // $barcode_generator = barcode_generator();
+    // $symbology = barcode_symbology($generator, 'code_39');
 
     $logo_url = store('logo') ? root_url().'/assets/itsolution24/img/logo-favicons/'.store('logo') : root_url().'/assets/itsolution24/img/noimage.jpg';
     $data = array(
@@ -545,9 +545,9 @@ function get_postemplate_data($invoice_id)
       'amount_in_text' => convert_number_to_word($invoice_info['payable_amount']),
 
       'qrcode' => '<img src="../storage/qrcode.png" alt="" class="img-responsive" style="display:inline-block" width="50" height="50">',
-      'qrcode_url' => '../storage/qrcode.png',
-      'barcode' => '<img class="bcimg" src="data:image/png;base64,'.base64_encode($generator->getBarcode($invoice_id, $symbology, 1)).'" height="20">',
-      'barcode_url' => 'data:image/png;base64,'.base64_encode($generator->getBarcode($invoice_id, $symbology, 1)),
+    //   'qrcode_url' => '../storage/qrcode.png',
+    //   'barcode' => '<img class="bcimg" src="data:image/png;base64,'.base64_encode($generator->getBarcode($invoice_id, $symbology, 1)).'" height="20">',
+    //   'barcode_url' => 'data:image/png;base64,'.base64_encode($generator->getBarcode($invoice_id, $symbology, 1)),
 
       'cashier_name' => '',
       'printed_on' => format_date(date_time()),

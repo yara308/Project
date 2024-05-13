@@ -1,5 +1,8 @@
 <style id="styles" type="text/css">
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 $template_id = get_preference('receipt_template') ? get_preference('receipt_template') : 1;
 echo html_entity_decode(get_the_postemplate($template_id,'template_css'));
 ?>
@@ -13,6 +16,7 @@ $data = get_postemplate_data($invoice_id);
 $parser = new Lex\Parser();
 $template = html_entity_decode(get_the_postemplate($template_id,'template_content'));
 echo $parser->parse($template, $data);
+
 ?>
 
 <div class="table-responsive footer-actions">
