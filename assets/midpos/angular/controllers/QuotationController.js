@@ -584,62 +584,54 @@ function (
         $scope.item = item;
         QuotationOptionSelectorModal($scope);
     }
+$scope.addItemToInvoice = function(data) {
+    var qty = 1;
+    if (data.item_quantity && data.item_quantity != undefined) {
+        qty = parseFloat(data.item_quantity);
+    }
+    var itemTaxAmount = 0;
+    if (data.tax_method == 'exclusive') {
+        itemTaxAmount = parseFloat(data.tax_amount);
+        $scope.itemTaxAmount = itemTaxAmount;
+    }
+	 var find = window._.find($scope.itemArray, function(item) {
+        return item.id == data.p_id;
+    });
 
-    $scope.addItemToInvoice = function(data) 
-    {
-        var qty = 1;
-        if (data.item_quantity && data.item_quantity != undefined) {
-            qty = parseFloat(data.item_quantity);
-        }
-        var itemTaxAmount = 0;
-        if (data.tax_method == 'exclusive') {
-            itemTaxAmount = parseFloat(data.tax_amount);
-            $scope.itemTaxAmount = itemTaxAmount;
-        }
+    if (find) {
+        // إذا كان المنتج موجودًا بالفعل، قم بإضافة كلمة "بونص" إلى اسم المنتج
+        data.p_name += " (bouns)";
+		  data.sell_price = 0;
+    }
 
-        var find = window._.find($scope.itemArray, function (item) { 
-            return item.id == data.p_id;
-        });
-        if (find) {
-            window._.map($scope.itemArray, function (item) {
-                if (item.id == data.p_id) {    
-                    $scope.$apply(function() {
-                        item.quantity = parseFloat(item.quantity) + parseFloat(qty);
-                        item.subTotal = (item.subTotal + (parseFloat(data.sell_price) * item.quantity)) + itemTaxAmount;
-                        $scope.totalQuantity = $scope.totalQuantity + item.quantity;
-                        $scope.totalAmount = $scope.totalAmount + (parseFloat(data.sell_price) * item.quantity) + itemTaxAmount;
-                    });
-                }
-            });
-        } else {
-            var item = [];
-            item.id = data.p_id;
-            item.pType = data.p_type;
-            item.hasVariant = data.has_variant;
-            item.variantID = data.variant_id;
-            item.variantSlug = data.variant_slug;
-            item.variantName = data.variant_name;
-            item.categoryId = data.category_id;
-            item.supId = data.sup_id;
-            item.name = data.p_name;
-            item.code = data.p_code;
-            item.available = data.quantity_in_stock;
-            item.unitName = data.unit_name;
-            item.taxMethod = data.tax_method;
-            item.taxrate = data.taxrate;
-            item.itemTaxAmount = itemTaxAmount;
-            item.quantity = qty;
-            item.sellPrice = parseFloat(data.sell_price) + parseFloat(data.sell_price_addition) + itemTaxAmount;
-            item.subTotal = (parseFloat(data.sell_price) * qty)  + (parseFloat(data.sell_price_addition) * qty) + itemTaxAmount;
-            $scope.$applyAsync(function() {
-                $scope.itemArray.push(item);
-            });
-            $scope.totalQuantity = $scope.totalQuantity + qty;
-            $scope.totalAmount = $scope.totalAmount + (parseFloat(data.sell_price) * qty) + (parseFloat(data.sell_price_addition) * qty) + item.itemTaxAmount;
-        }
-        $scope.totalItem = window._.size($scope.itemArray);
-        $scope._calcTotalPayable();
-    };
+    var item = [];
+    item.id = data.p_id;
+    item.pType = data.p_type;
+    item.hasVariant = data.has_variant;
+    item.variantID = data.variant_id;
+    item.variantSlug = data.variant_slug;
+    item.variantName = data.variant_name;
+    item.categoryId = data.category_id;
+    item.supId = data.sup_id;
+    item.name = data.p_name;
+    item.code = data.p_code;
+    item.available = data.quantity_in_stock;
+    item.unitName = data.unit_name;
+    item.taxMethod = data.tax_method;
+    item.taxrate = data.taxrate;
+    item.itemTaxAmount = itemTaxAmount;
+    item.quantity = qty;
+    item.sellPrice = parseFloat(data.sell_price) + parseFloat(data.sell_price_addition) + itemTaxAmount;
+    item.subTotal = (parseFloat(data.sell_price) * qty)  + (parseFloat(data.sell_price_addition) * qty) + itemTaxAmount;
+    $scope.$applyAsync(function() {
+        $scope.itemArray.push(item);
+    });
+    $scope.totalQuantity = $scope.totalQuantity + qty;
+    $scope.totalAmount = $scope.totalAmount + (parseFloat(data.sell_price) * qty) + (parseFloat(data.sell_price_addition) * qty) + item.itemTaxAmount;
+
+    $scope.totalItem = window._.size($scope.itemArray);
+    $scope._calcTotalPayable();
+};
 
     // Remove Item from Quotation Item
     $scope.removeItemFromInvoice = function (index, id) {
@@ -681,47 +673,47 @@ function (
     });
 
 
-    // Create Quotation
     $(document).delegate("#create-quotation-submit", "click", function(e) {
-        e.preventDefault();
-        var $tag = $(this);
-        var $btn = $tag.button("loading");
-        var form = $($tag.data("form"));
-        form.find(".alert").remove();
-        var actionUrl = form.attr("action");
-        
-        $http({
-            url: window.baseUrl + "/_inc/" + actionUrl + "?action_type=CREATE",
-            method: "POST",
-            data: form.serialize(),
-            cache: false,
-            processData: false,
-            contentType: false,
-            dataType: "json"
-        }).
-        then(function(response) {
-            $("#reset").trigger("click");
-            $btn.button("reset");
-            $(":input[type=\"button\"]").prop("disabled", false);
-            var alertMsg = response.data.msg;
-            window.toastr.success(alertMsg, "Success!");
-            id = response.data.id;
-            dt.DataTable().ajax.reload(function(json) {
-                if ($("#row_"+id).length) {
-                    $("#row_"+id).flash("yellow", 5000);
-                }
-            }, false);
-        }, function(response) {
-            $btn.button("reset");
-            $(":input[type=\"button\"]").prop("disabled", false);
-            var alertMsg = "<div>";
-            window.angular.forEach(response.data, function(value) {
-                alertMsg += "<p>" + value + ".</p>";
-            });
-            alertMsg += "</div>";
-            window.toastr.warning(alertMsg, "Warning!");
+    e.preventDefault();
+    var $tag = $(this);
+    var $btn = $tag.button("loading");
+    var form = $($tag.data("form"));
+    form.find(".alert").remove();
+    var actionUrl = form.attr("action");
+    
+    $http({
+        url: window.baseUrl + "/_inc/" + actionUrl + "?action_type=CREATE",
+        method: "POST",
+        data: form.serialize(),
+        cache: false,
+        processData: false,
+        contentType: false,
+        dataType: "json"
+    }).
+    then(function(response) {
+        $("#reset").trigger("click");
+        $btn.button("reset");
+        $(":input[type=\"button\"]").prop("disabled", false);
+        var alertMsg = response.data.msg;
+        window.toastr.success(alertMsg, "Success!");
+        id = response.data.id;
+        dt.DataTable().ajax.reload(function(json) {
+            if ($("#row_"+id).length) {
+                $("#row_"+id).flash("yellow", 5000);
+            }
+        }, false);
+    }, function(response) {
+        $btn.button("reset");
+        $(":input[type=\"button\"]").prop("disabled", false);
+        var alertMsg = "<div>";
+        window.angular.forEach(response.data, function(value) {
+            alertMsg += "<p>" + value + ".</p>";
         });
+        alertMsg += "</div>";
+        window.toastr.warning(alertMsg, "Warning!");
     });
+});
+
 
     // Edit Quotation
     if (window.getParameterByName("reference_no")) {

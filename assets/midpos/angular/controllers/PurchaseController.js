@@ -919,6 +919,7 @@ function (
         .then(function(res) {
             $("#reference_no").val(res.data.info.invoice_id);
             $("#purchase-note").val(res.data.info.purchase_note);
+			$("#expirydate").val(res.data.info.expirydate);
             $scope.sup_id = res.data.info.sup_id;
             $("#sup_id").val(res.data.info.sup_id).trigger("change");          
 
@@ -974,6 +975,7 @@ function (
 
         $("#reference_no").val("");
         $("#purchase-note").val("");
+		$("#expirydate").val("");
         $("#sup_id").val("").trigger("change");
         $("#customer_id").val("").trigger("change");
         $("#reference_no").val("");
